@@ -1,0 +1,27 @@
+﻿@* To connect to the data we are passing to the view *@
+@* The list is now in our model property *@
+@* We can only have one model *@
+@model List<Trip>
+
+<h1>My Trips</h1>
+<table>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model[0].Destination)</th>
+        <th>@Html.DisplayNameFor(model => model[0].StartDate)</th>
+        <th>@Html.DisplayNameFor(Model => Model[0].EndDate)</th>
+        <th>Details</th>
+    </tr>
+    @foreach (var trip in Model)
+    {
+        <tr>
+            @* FK relationship for destination! *@
+            <td>@trip.Destination.Name</td>
+            @* Use Html.DisplayFor() to make sure the annotations from the model come through *@
+            @* Always use this, just to be sure *@
+            <td>@Html.DisplayFor(modelItem => trip.StartDate)</td>
+            <td>@Html.DisplayFor(modelItem => trip.EndDate)</td>
+            <td><a asp-controller="Trip" asp-action="Details" 
+                asp-route-id="@trip.ID">Details</a></td>
+        </tr> 
+    }
+</table>

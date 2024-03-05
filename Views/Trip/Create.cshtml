@@ -1,0 +1,37 @@
+﻿@* Use this model so you can easily bind form models to Trip properties *@
+@model Trip
+
+@* Creating dropdown lists can be a hassle, so we get that out of the way here *@
+@{
+    var locations = (IEnumerable<SelectListItem>)ViewData["Locations"];
+    var people = (IEnumerable<SelectListItem>)ViewData["People"];
+
+}
+
+<h1>Create trip</h1>
+
+<form asp-action="Create" method="post">
+    @* Use asp-for to bind to a property *@
+    <label asp-for="StartDate">
+        @Html.DisplayNameFor(model => model.StartDate)
+    </label>
+    @* As StartDate is a datetime, a datepicker will automatically be generated *@
+    <input asp-for="StartDate" /><br />
+    <label asp-for="EndDate">
+        @Html.DisplayNameFor(model => model.EndDate)
+    </label>
+    <input asp-for="EndDate" /><br />
+    
+    <label asp-for="DestinationID">
+        @Html.DisplayNameFor(model => model.DestinationID)
+    </label>
+    @* This will populate the dropdown list with the items from the locations var *@
+    <select asp-for="DestinationID" asp-items="locations"></select><br />
+    <label asp-for="PersonID">
+        @Html.DisplayNameFor(model => model.PersonID)
+    </label>
+    <select asp-for="PersonID" asp-items="people"></select><br />
+
+
+    <input type="submit" value="Create trip" />
+</form>

@@ -22,15 +22,15 @@ namespace TripManager.Models
         public DateTime EndDate { get; set; }
 
         //FK relations, adding the FK property is not mandatory, but easier for the future
-        //A location
-
         [Display(Name = "The destination")]
         public Location Destination { get; set; }
 
+        [Display(Name = "Destination")]
         public int DestinationID { get; set; }
 
         public Person Person { get; set; }
 
+        [Display(Name = "Guide")]
         public int PersonID { get; set; }
 
     }

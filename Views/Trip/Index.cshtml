@@ -4,6 +4,9 @@
 @model List<Trip>
 
 <h1>My Trips</h1>
+
+<a asp-controller="Trip" asp-action="Create">Create new trip</a>
+
 <table>
     <tr>
         <th>@Html.DisplayNameFor(model => model[0].Destination)</th>
